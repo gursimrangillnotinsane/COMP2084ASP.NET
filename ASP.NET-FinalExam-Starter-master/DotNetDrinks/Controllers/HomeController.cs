@@ -28,6 +28,11 @@ namespace DotNetDrinks.Controllers
             // When testing view results, make sure to specify view name
             return View("Privacy");
         }
+        public IActionResult About()
+        {
+            // When testing view results, make sure to specify view name
+            return View("About");
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

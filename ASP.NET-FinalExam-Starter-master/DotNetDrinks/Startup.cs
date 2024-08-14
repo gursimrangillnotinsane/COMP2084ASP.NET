@@ -29,7 +29,7 @@ namespace DotNetDrinks
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection"))); 
+                    Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
@@ -39,6 +39,7 @@ namespace DotNetDrinks
             services.AddSession();
 
             services.AddControllersWithViews();
+            services.AddSwaggerGen();
 
         }
 
@@ -73,6 +74,9 @@ namespace DotNetDrinks
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "DotNetDrinks API v1"));
         }
     }
 }

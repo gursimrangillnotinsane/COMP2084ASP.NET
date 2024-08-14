@@ -33,6 +33,20 @@
         </dt>
         <dd class="col-sm-10">
             @* ADD IMG HERE *@
+
+            @if (String.IsNullOrEmpty(Model.Image))
+            {
+                <a href="~/img/products/drinks-placeholder.png" target="_blank">
+                <img src="~/img/products/drinks-placeholder.png" alt="Product Image" class="img-thumbnail" />
+                </a>
+            }
+            else
+            {
+                <a href="@Url.Content(Model.Image)" target="_blank">
+                <img src="~/img/products/@Html.DisplayFor(model => model.Image)" alt="Product Image" class="img-thumbnail" />
+                </a>
+            }
+            
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Brand)
